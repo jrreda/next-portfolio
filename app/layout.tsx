@@ -32,9 +32,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          <div className="mt-10">
-            {children}
-          </div>
+          {children}
           <Footer />
         </ThemeProvider>
       </body>
