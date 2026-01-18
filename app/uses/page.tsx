@@ -1,4 +1,3 @@
-
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { categories, workstation } from '@/data/uses'
