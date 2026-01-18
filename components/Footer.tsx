@@ -1,5 +1,8 @@
-// import { motion } from 'framer-motion'
+'use client'
+
+import { motion } from 'framer-motion'
 import { Code2, Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import Link from 'next/link'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -27,27 +30,30 @@ export function Footer() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             {/* Logo and tagline */}
             <div className="md:col-span-2">
-              <div
+              <motion.div
                 className="flex items-center gap-2 mb-4"
+                whileHover={{ scale: 1.05 }}
               >
                 <Code2 className="w-8 h-8 text-primary" />
                 <span className="text-xl font-bold">Portfolio</span>
-              </div>
+              </motion.div>
               <p className="text-muted-foreground mb-4 max-w-md">
-                Crafting exceptional digital experiences with modern technologies. Let's build something amazing together.
+                Crafting exceptional digital experiences with modern technologies.
+                Let's build something amazing together.
               </p>
               <div className="flex items-center gap-4">
-                {socialLinks.map(social => (
-                  <a
+                {socialLinks.map((social, index) => (
+                  <motion.a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-lg hover:bg-accent text-muted-foreground hover:text-foreground transition-colors"
+                    whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <social.icon className="w-5 h-5" />
-                  </a>
+                  </motion.a>
                 ))}
               </div>
             </div>
@@ -56,14 +62,15 @@ export function Footer() {
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                {navLinks.map(link => (
+                {navLinks.map((link) => (
                   <li key={link.href}>
-                    <a
+                    <motion.a
                       href={link.href}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      whileHover={{ x: 5 }}
                     >
                       {link.label}
-                    </a>
+                    </motion.a>
                   </li>
                 ))}
               </ul>
