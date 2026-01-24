@@ -2,15 +2,17 @@
 
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
-import { Sparkles } from 'lucide-react'
+import { Sparkles, LucideIcon } from 'lucide-react'
+import { ReactNode } from 'react'
 
-// interface PageHeroProps {
-//   title: string
-//   description: string
-//   badge: string
-// }
+interface PageHeroProps {
+  badge: string
+  title: string | ReactNode
+  description: string
+  icon?: LucideIcon
+}
 
-export function PageHero() {
+export function PageHero({ badge, title, description, icon: Icon = Sparkles }: PageHeroProps) {
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Animated background */}
@@ -38,8 +40,8 @@ export function PageHero() {
           transition={{ duration: 0.8 }}
         >
           <Badge variant="secondary" className="mb-4">
-            <Sparkles className="w-3 h-3 mr-1" />
-            Get In Touch
+            <Icon className="w-3 h-3 mr-1" />
+            {badge}
           </Badge>
           <motion.h1
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
@@ -47,8 +49,7 @@ export function PageHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Let&apos;s{' '}
-            <span className="text-gradient">work together</span>
+            {title}
           </motion.h1>
           <motion.p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
@@ -56,8 +57,7 @@ export function PageHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Have a project in mind? I&apos;d love to hear about it. Send me a message
-            and let&apos;s create something amazing together.
+            {description}
           </motion.p>
         </motion.div>
       </div>
