@@ -31,6 +31,10 @@ export const metadata: Metadata = {
     title: "Portfolio | Modern Developer Portfolio",
     description: "A modern portfolio showcasing my work, experience, and interests.",
   },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  }
 };
 
 export default function RootLayout({
