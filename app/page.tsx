@@ -151,39 +151,6 @@ export default function HomePage() {
     }
   }
 
-  const handleContactSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(contactForm),
-      })
-
-      if (response.ok) {
-        toast({
-          title: 'Message sent successfully! 🎉',
-          description: "I'll get back to you as soon as possible.",
-        })
-        setContactForm({ name: '', email: '', subject: '', message: '' })
-      } else {
-        throw new Error('Failed to send message')
-      }
-    } catch (error) {
-      toast({
-        message: 'Error ❌',
-        description: 'Failed to send message. Please try again.',
-        variant: 'destructive',
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -999,7 +966,7 @@ export default function HomePage() {
                   <CardTitle>Send a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <form  className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Your Name *</Label>
                       <Input
