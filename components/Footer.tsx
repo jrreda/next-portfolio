@@ -1,27 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code2, Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
+import { Code2, Heart } from 'lucide-react'
 import Link from 'next/link'
+import { footerContactInfo, contactMethods, PersonalInfo } from '@/data/contact'
+import { getIcon } from './contact/LeftSide'
+
+const navLinks = [
+  { label: 'Now', href: '/now' },
+  { label: 'Uses', href: '/uses' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Career', href: '/career' },
+  { label: 'Skills', href: '/skills' },
+]
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
-
-  const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Mail, href: '#', label: 'Email' },
-  ]
-
-  const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Now', href: '/now' },
-    { label: 'Uses', href: '/uses' },
-    { label: 'Resources', href: '/resources' },
-    { label: 'Projects', href: '/projects' },
-    { label: 'Contact', href: '/contact' },
-  ]
 
   return (
     <footer className="border-t mt-auto">
@@ -39,20 +35,20 @@ export function Footer() {
               </motion.div>
               <p className="text-muted-foreground mb-4 max-w-md">
                 Crafting exceptional digital experiences with modern technologies.
-                Let's build something amazing together.
+                Let&apos;s build something amazing together.
               </p>
               <div className="flex items-center gap-4">
-                {socialLinks.map((social, index) => (
+                {contactMethods.map(method => (
                   <motion.a
-                    key={social.label}
-                    href={social.href}
+                    key={method.label}
+                    href={method.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg hover:bg-accent text-muted-foreground hover:text-foreground transition-colors"
+                    className={`p-2 rounded-lg hover:bg-accent hover:text-foreground transition-colors text-primary`}
                     whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <social.icon className="w-5 h-5" />
+                    {getIcon(method.iconName)}
                   </motion.a>
                 ))}
               </div>
@@ -62,7 +58,7 @@ export function Footer() {
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                {navLinks.map((link) => (
+                {navLinks.map(link => (
                   <li key={link.href}>
                     <motion.a
                       href={link.href}
@@ -80,9 +76,31 @@ export function Footer() {
             <div>
               <h3 className="font-semibold mb-4">Contact</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>hello@example.com</li>
-                <li>San Francisco, CA</li>
-                <li>Available for freelance</li>
+                {footerContactInfo.map(info => (
+                  <motion.div
+                    key={info.label}
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <div className="p-2 rounded-lg text-primary">{getIcon(info.iconName)}</div>
+                    <div>
+                      <div className="text-sm text-muted-foreground">{info.label}</div>
+                      {info.href ? (
+                        <Link href={info.href} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline">
+                            {info.value}
+                          </Link>
+                        ) : (
+                          <div className="text-sm font-medium">{info.value}</div>
+                        )
+                      }
+                    </div>
+                  </motion.div>
+                ))}
               </ul>
             </div>
           </div>
@@ -91,7 +109,7 @@ export function Footer() {
           <div className="pt-8 border-t">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-muted-foreground">
-                © {currentYear} Alex Johnson. All rights reserved.
+                © {currentYear} {PersonalInfo.name}. All rights reserved.
               </p>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 Built with{' '}

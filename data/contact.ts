@@ -8,9 +8,12 @@ export type ContactMethod = {
 }
 
 export type ContactInfo = {
-  iconName: 'MapPin' | 'Clock' | 'Phone'
+  iconName: 'MapPin' | 'Clock' | 'Phone' | 'Mail'
   label: string
   value: string
+  href?: string
+  color?: string
+  borderColor?: string
 }
 
 export const contactMethods: ContactMethod[] = [
@@ -57,3 +60,40 @@ export const contactInfo: ContactInfo[] = [
     value: 'Within 24 hours',
   },
 ]
+
+export const footerContactInfo: ContactInfo[] = [
+  {
+    iconName: 'MapPin',
+    label: 'Location',
+    value: 'Cairo, Egypt',
+  },
+  {
+    iconName: 'Clock',
+    label: 'Timezone',
+    value: 'CET (UTC+2)',
+  },
+  {
+    iconName: 'Mail',
+    label: 'Email',
+    value: 'jrreda.dev@gmail.com',
+    href: 'mailto:jrreda.dev@gmail.com',
+    color: 'bg-primary/10 text-primary',
+    borderColor: 'border-primary/20',
+  }
+]
+
+export type PersonalInfo = {
+  name: string
+  email: string
+  phone: string
+  location: string
+  timezone: string
+}
+
+export const PersonalInfo: PersonalInfo = {
+  name: 'Mahmoud Reda',
+  email: 'jrreda.dev@gmail.com',
+  phone: '+20 100 000 0000',
+  location: 'Cairo, Egypt',
+  timezone: 'CET (UTC+2)',
+}
