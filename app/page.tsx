@@ -4,9 +4,6 @@ import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Label } from '@/components/ui/label'
 import {
   Sparkles,
   ArrowRight,
@@ -14,7 +11,6 @@ import {
   Linkedin,
   Twitter,
   Mail,
-  Download,
   Target,
   Award,
   Zap,
@@ -22,21 +18,12 @@ import {
   Calendar,
   MapPin,
   Briefcase,
-  Send,
 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { toast } from 'sonner'
+import GetInTouch from '@/components/GetInTouch'
 
 export default function HomePage() {
-  const [contactForm, setContactForm] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
   const stats = [
     { icon: <Target />, value: '6+', label: 'Years Experience' },
     { icon: <Award />, value: '50+', label: 'Projects Completed' },
@@ -889,137 +876,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="text-center mb-12">
-              <Badge variant="secondary" className="mb-4">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Get In Touch
-              </Badge>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-                Let's{' '}
-                <span className="text-gradient">work together</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Have a project in mind? I'd love to hear about it.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Contact Info</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <a
-                    href="mailto:hello@example.com"
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
-                  >
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium">Email</div>
-                      <div className="text-sm text-muted-foreground">hello@example.com</div>
-                    </div>
-                  </a>
-                  <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
-                  >
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Github className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium">GitHub</div>
-                      <div className="text-sm text-muted-foreground">@alexjohnson</div>
-                    </div>
-                  </a>
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent transition-colors"
-                  >
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
-                      <Linkedin className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-medium">LinkedIn</div>
-                      <div className="text-sm text-muted-foreground">/in/alexjohnson</div>
-                    </div>
-                  </a>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Send a Message</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form  className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Your Name *</Label>
-                      <Input
-                        id="name"
-                        value={contactForm.name}
-                        onChange={(e) =>
-                          setContactForm({ ...contactForm, name: e.target.value })
-                        }
-                        placeholder="John Doe"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={contactForm.email}
-                        onChange={(e) =>
-                          setContactForm({ ...contactForm, email: e.target.value })
-                        }
-                        placeholder="john@example.com"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
-                      <Textarea
-                        id="message"
-                        value={contactForm.message}
-                        onChange={(e) =>
-                          setContactForm({ ...contactForm, message: e.target.value })
-                        }
-                        placeholder="Tell me about your project..."
-                        rows={4}
-                        required
-                      />
-                    </div>
-                    <Button
-                      type="submit"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                      <Send className="ml-2 w-4 h-4" />
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <GetInTouch />
     </div>
   )
 }
