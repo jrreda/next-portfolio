@@ -1,28 +1,30 @@
 export const currentFocus = [
   {
-    category: '🚀 Primary Focus',
+    category: 'What I\'m Focusing On',
     items: [
-      'Building a SaaS platform for small businesses',
-      'Contributing to open source React/Next.js ecosystem',
-      'Learning Rust and WebAssembly for performance optimization',
-      'Mentoring junior developers on best practices',
+      'Implementing CI/CD pipelines for multiple different projects at work using GitHub Actions',
+      'Building and improving my portfolio website with Next.js',
+      'Combining my AI and software engineering skills to build practical real-world products',
+      'Preparing for my upcoming IELTS exam in late April 2026',
     ],
   },
   {
-    category: '📚 Learning',
+    category: 'What I\'m Learning',
     items: [
-      'Advanced TypeScript patterns and type safety',
-      'Server-side rendering and edge computing',
-      'Web3 and blockchain development fundamentals',
-      'AI/ML integration in web applications',
+      'Learning and implementing best practices for scalable architecture',
+      'Advanced React patterns and performance optimization',
+      'AI/ML integration in web applications using Vercel AI SDK',
+      'Angular 21 and its new features and improvements',
     ],
   },
   {
-    category: '💼 Work',
+    category: 'What\'s Next',
     items: [
-      'Senior Full Stack Developer at Tech Innovations Inc.',
-      'Freelance consulting for startups',
-      'Technical advisor for 2 early-stage companies',
+      'Continue expanding my portfolio with new projects',
+      'Launch MVP of SaaS platform',
+      'Contribute to 10+ open source projects',
+      'Write blog posts about my development journey and learnings',
+      'Build a side project that reaches 1K users',
     ],
   },
 ]
